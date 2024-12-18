@@ -1,5 +1,5 @@
-import millie
+import cage_construct
 
 
 def test_foo() -> None:
-    assert millie.foo(12) == "Hello, World! Also: 12"
+    assert cage_construct.foo(12) == "Hello, World! Also: 12"
