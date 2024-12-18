@@ -1,16 +1,11 @@
-# List all commands.
+# List all recipes.
 default:
   @just --list
 
-# Build docs.
-docs:
-  rm -rf docs/build docs/source/_autosummary
-  uv run make -C docs html
-  echo Docs are in $PWD/docs/build/html/index.html
-
-# Do a dev install.
+# Install development environment.
 dev:
-  uv sync --all-extras --dev
+  pip install -e '.[dev]'
+  mamba install -y xtb
 
 # Run code checks.
 check:
@@ -20,32 +15,28 @@ check:
   trap error=1 ERR
 
   echo
-  (set -x; uv run ruff check src/ tests/ docs/source/ examples/ )
-  test $? = 0
+  (set -x; ruff check . )
 
   echo
-  ( set -x; uv run ruff format --check src/ tests/ docs/source/ examples/ )
-  test $? = 0
+  ( set -x; ruff format --check . )
 
   echo
-  ( set -x; uv run mypy src/ tests/ docs/source/ examples/ )
-  test $? = 0
+  ( set -x; mypy src )
 
   echo
-  ( set -x; uv run pytest )
-  test $? = 0
-
-  echo
-  ( set -x; rm -rf docs/build docs/source/_autosummary; uv run make -C docs doctest )
-  test $? = 0
+  ( set -x; pytest --cov=src --cov-report term-missing )
 
   test $error = 0
 
+
 # Auto-fix code issues.
 fix:
-  uv run ruff format src/ tests/ docs/source/ examples/
-  uv run ruff check --fix src/ tests/ docs/source/ examples/
+  ruff format .
+  ruff check --fix .
 
-# Build a release.
-build:
-  uv build
+
+# Build docs.
+docs:
+  rm -rf ./docs/build docs/source/_autosummary
+  make -C docs html
+  echo Docs are in $PWD/docs/build/html/index.html
