@@ -46,15 +46,12 @@ jobs:
       run:
         shell: bash -l {0}
     steps:
-      - uses: actions/checkout@v3
-      - uses: conda-incubator/setup-miniconda@v2
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
         with:
-          auto-update-conda: true
-          miniforge-variant: Mambaforge
-          channels: conda-forge,defaults
+          miniforge-version: latest
           python-version: 3.11
           activate-environment: pytest
-          use-mamba: true
       - name: Build environment
         run: |
           conda activate pytest
@@ -70,15 +67,12 @@ jobs:
       run:
         shell: bash -l {0}
     steps:
-      - uses: actions/checkout@v3
-      - uses: conda-incubator/setup-miniconda@v2
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
         with:
-          auto-update-conda: true
-          miniforge-variant: Mambaforge
-          channels: conda-forge,defaults
+          miniforge-version: latest
           python-version: 3.11
           activate-environment: pytest
-          use-mamba: true
       - name: Build environment
         run: |
           conda activate pytest
@@ -94,15 +88,12 @@ jobs:
       run:
         shell: bash -l {0}
     steps:
-      - uses: actions/checkout@v3
-      - uses: conda-incubator/setup-miniconda@v2
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
         with:
-          auto-update-conda: true
-          miniforge-variant: Mambaforge
-          channels: conda-forge,defaults
+          miniforge-version: latest
           python-version: 3.11
           activate-environment: pytest
-          use-mamba: true
       - name: Build environment
         run: |
           conda activate pytest
