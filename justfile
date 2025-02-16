@@ -40,3 +40,12 @@ docs:
   rm -rf ./docs/build docs/source/_autosummary
   make -C docs html
   echo Docs are in $PWD/docs/build/html/index.html
+
+# Initialize the repo.
+init repo-name:
+  for FILE in $(rg --files-with-matches millie); \
+  do \
+    sd millie {{repo-name}} $FILE; \
+  done
+  mv src/millie src/{{repo-name}}
+
