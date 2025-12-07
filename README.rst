@@ -10,7 +10,7 @@ A code base for using `stk <https://stk.readthedocs.io/en/stable/>`_ to
 construct and optimise two porous cage molecules.
 
 Thank you to Lukas Turcani for the initial template this was built on. However,
-there are significant differences due to ``stk`` ecosystem incompatability with
+there are significant differences due to ``stko`` ecosystem incompatability with
 ``uv``.
 
 Installation
@@ -22,6 +22,12 @@ To run the scripts or develop this code, you can clone the repo and use
 .. code-block:: bash
 
   just dev
+
+Then install xtb (if you want to run the example scripts as they are):
+
+.. code-block:: bash
+
+  mamba install xtb
 
 Usage
 =====
