@@ -5,7 +5,6 @@ default:
 # Install development environment.
 dev:
   pip install -e '.[dev]'
-  mamba install -y xtb
 
 # Run code checks.
 check:
@@ -47,5 +46,5 @@ init repo-name:
   do \
     sd millie {{repo-name}} $FILE; \
   done
-  mv src/millie src/{{repo-name}}
+  mv src/cage_construct src/{{repo-name}}
 
